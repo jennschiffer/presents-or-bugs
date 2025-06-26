@@ -7,7 +7,7 @@ const jennStateContainer = document.querySelector('#jenn-state')
 
 // lets create the websocket
 // IMPORTANT: you need to update this if you remix the project
-const socket = new WebSocket("wss://presents-or-bugs.glitch.me");
+const socket = new WebSocket("wss://presents-or-bugs.onrender.com");
 
 // socket opens
 socket.onopen = (event) => {
