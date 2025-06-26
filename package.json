@@ -1,0 +1,25 @@
+{
+  "name": "hello-fastify-websocket",
+  "description": "A starter websocket app using @fastify/websocket",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "fastify": "^4.24.3",
+    "handlebars": "^4.7.8",
+    "@fastify/view": "^8.2.0",
+    "@fastify/static": "^6.12.0",
+    "@fastify/websocket": "^8.2.0"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "websocket",
+    "fastify"
+  ]
+}
