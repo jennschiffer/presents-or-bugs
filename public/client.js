@@ -1,13 +1,13 @@
 /* CLIENT SIDE WEBSOCKET */
 let clientId;
 
-const choices = ['🎁', '🪳']
-let emojiChoice = 0
-const jennStateContainer = document.querySelector('#jenn-state')
+const choices = ["🎁", "🪳"];
+let emojiChoice = 0;
+const jennStateContainer = document.querySelector("#jenn-state");
 
 // lets create the websocket
 // IMPORTANT: you need to update this if you remix the project
-const socket = new WebSocket("wss://presents-or-bugs.onrender.com");
+const socket = new WebSocket(window.location.origin.replace(/^https/, "wss"));
 
 // socket opens
 socket.onopen = (event) => {
@@ -22,9 +22,9 @@ socket.onmessage = (event) => {
   if (data.clientId) {
     clientId = data.clientId;
   }
-  
+
   if (data.jennmoji) {
-    jennStateContainer.innerHTML = data.jennmoji
+    jennStateContainer.innerHTML = data.jennmoji;
   }
 
   // if clientStates sent, traverse and show them on screen
@@ -35,9 +35,8 @@ socket.onmessage = (event) => {
 
 // render clientState data into fun cursors on screen
 const showClientStates = (clients) => {
-  
-  document.querySelectorAll('span').forEach(span => span.remove())
-  
+  document.querySelectorAll("span").forEach((span) => span.remove());
+
   for (let id in clients) {
     // ignore our state in this object
     if (clientId !== id) {
@@ -56,13 +55,13 @@ const showClientStates = (clients) => {
 // send event on mouse/touch move
 const sendEventOnMove = (e) => {
   socket.send(JSON.stringify({ x: e.pageX, y: e.pageY, emojiChoice }));
-}
+};
 
 // on click, change cursor
 window.addEventListener("click", (e) => {
-  emojiChoice = emojiChoice ? 0 : 1
-  sendEventOnMove(e)
-})
+  emojiChoice = emojiChoice ? 0 : 1;
+  sendEventOnMove(e);
+});
 
 // on mouse/touch moves, send cursor state to server
 window.addEventListener("mousemove", sendEventOnMove);
