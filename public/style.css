@@ -1,0 +1,35 @@
+/* a minimalist set of CSS resets */
+
+/* default to border-box */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* adjust typography defaults */
+body {
+  margin: 1rem;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+#jenn-state {
+  font-size: 5em;
+  text-align: center;
+  padding: 2em;
+}
+
+span {
+  font-size: 2em;
+}
+
+#info {
+  font-size: .8em; 
+  border: 1px solid black;
+  max-width: 500px;
+  padding: 1em;
+}
